@@ -57,9 +57,9 @@ def print_poly(coefs, x_data, name, print_flag):
         addOn = sign_switch(coefs[i])
         for j in range(i):
             if x_data[j] == 0:
-                addOn += "*(x - 0)"
+                addOn += " * (x - 0)"
             else:
-                addOn += "*(x" + sign_switch(-x_data[j]) + ")"
+                addOn += " * (x" + sign_switch(-x_data[j]) + ")"
         P += f"{addOn}"
         if print_flag:
             print(f"      {addOn}")
