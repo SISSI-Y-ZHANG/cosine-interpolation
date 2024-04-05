@@ -121,7 +121,7 @@ def interpolation(x_data, y_data, name, print_flag):
     P = print_poly(coefs, x_data, name, print_flag)
     return (P, coefs)
 
-def get_cos_error(P, x_value, name, print_flag):
+def get_cos_error(P, x_value, print_flag, name=""):
     # map x_value into cos1/2's domain
     x_revised = domain_cos(x_value)
 
@@ -179,7 +179,7 @@ def analyze_cos_P(x_value, interpolants, name, print_flag):
     cos_P, coefs = interpolation(cos_x_data, cos_y_data, name, print_flag)
 
     # generate and print x, cos, cos_P, and error
-    get_cos_error(cos_P, x_value, name, print_flag)
+    get_cos_error(cos_P, x_value, print_flag, name=name)
 
     # plot graph
     if print_flag:
@@ -214,8 +214,8 @@ def main():
 
     # compare errors in cos1 and cos2
     interval = np.linspace(-np.pi, 3*np.pi, num=500)
-    err1 = get_cos_error(cos1, interval, "cos1", False)
-    err2 = get_cos_error(cos2, interval, "cos2", False)
+    err1 = get_cos_error(cos1, interval, False)
+    err2 = get_cos_error(cos2, interval, False)
     compare_error(interval, err1, err2, "cos1", "cos2")
 
 if __name__ == "__main__":
