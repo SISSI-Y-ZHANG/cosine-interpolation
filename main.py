@@ -172,7 +172,7 @@ def compare_error(interval, err1, err2, name1, name2):
     pyp.legend([f"{name1} errors(x)", f"{name2} errors(x)"], loc="upper right")
     pyp.show()
 
-def eval_cos_P(x_value, interpolants, name, print_flag):
+def analyze_cos_P(x_value, interpolants, name, print_flag):
     # generate the interpolated polynomial
     cos_x_data = interpolants
     cos_y_data = [np.cos(x) for x in cos_x_data] 
@@ -206,11 +206,11 @@ def main():
 
     # equally spaced interpolants
     interpolants = [0, np.pi/4, np.pi/2]
-    cos1 = eval_cos_P(x_value, interpolants, "cos1", True)
+    cos1 = analyze_cos_P(x_value, interpolants, "cos1", True)
 
     # chebyshev interpolants
     interpolants = chebyshev_nodes(0, np.pi/2, 3)
-    cos2 = eval_cos_P(x_value, interpolants, "cos2", True)
+    cos2 = analyze_cos_P(x_value, interpolants, "cos2", True)
 
     # compare errors in cos1 and cos2
     interval = np.linspace(-np.pi, 3*np.pi, num=500)
